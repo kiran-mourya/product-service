@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/products")
 public class ProductController {
 
    @Autowired
@@ -21,7 +22,6 @@ public class ProductController {
        return new ResponseEntity<>(productService.saveProduct(productDTO), HttpStatus.CREATED);
    }
 
-
    @GetMapping("/product-details")
     public ResponseEntity<List<ProductDTO>> getAllProductDetails(){
         return new ResponseEntity<>(productService.getAllProduct(),HttpStatus.OK);
@@ -31,6 +31,8 @@ public class ProductController {
     public ResponseEntity<ProductDTO> getProductDetailsById(@PathVariable Integer id){
         return new ResponseEntity<>(productService.getProductDetailsById(id),HttpStatus.OK);
     }
+
+
 
 
 }

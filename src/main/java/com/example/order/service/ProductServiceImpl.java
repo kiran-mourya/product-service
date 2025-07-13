@@ -25,15 +25,13 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<ProductDTO> getAllProduct() {
         List<Product> productList = productRepository.findAll();
-        List<ProductDTO> productDTOList = createProductList(productList);
-        return productDTOList;
+        return createProductList(productList);
     }
 
     @Override
     public ProductDTO getProductDetailsById(Integer id) {
         Product product = productRepository.findById(id).get();
-        ProductDTO productDTO = createProductFromProduct(product);
-        return productDTO;
+        return createProductFromProduct(product);
     }
 
     private List<ProductDTO> createProductList(List<Product> productList) {
@@ -45,6 +43,7 @@ public class ProductServiceImpl implements ProductService{
             product.setP_descriptions(pr.getP_descriptions());
             product.setSpecifications(pr.getSpecifications());
             product.setShipping_information(pr.getShipping_information());
+            product.setQuantity(pr.getQuantity());
             productDTOList.add(product);
         }
         return productDTOList;
@@ -55,6 +54,7 @@ public class ProductServiceImpl implements ProductService{
         product.setPricing(productDTO.getPricing());
         product.setP_descriptions(productDTO.getP_descriptions());
         product.setSpecifications(productDTO.getSpecifications());
+        product.setQuantity(productDTO.getQuantity());
         product.setShipping_information(productDTO.getShipping_information());
         return product;
     }
@@ -65,6 +65,7 @@ public class ProductServiceImpl implements ProductService{
         productDTO.setP_descriptions(product.getP_descriptions());
         productDTO.setSpecifications(product.getSpecifications());
         productDTO.setShipping_information(product.getShipping_information());
+        productDTO.setQuantity(product.getQuantity());
         return productDTO;
     }
 }
