@@ -21,7 +21,6 @@ public class ProductController {
        return new ResponseEntity<>(productService.saveProduct(productDTO), HttpStatus.CREATED);
    }
 
-
    @GetMapping("/product-details")
     public ResponseEntity<List<ProductDTO>> getAllProductDetails(){
         return new ResponseEntity<>(productService.getAllProduct(),HttpStatus.OK);
